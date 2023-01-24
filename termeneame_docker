@@ -1,0 +1,38 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options
+from termcolor import colored
+import os
+import datetime
+from selenium.common.exceptions import TimeoutException
+
+
+#oculta el navegador Firefox
+os.environ['MOZ_HEADLESS'] = '1'
+
+
+driver = webdriver.Firefox()
+
+
+#Obteniendo los datos
+try:
+    driver.get("https://old.meneame.net")
+    noticias = driver.find_elements(By.XPATH, '//*/div/*/h2/a')
+    enlaces = driver.find_elements(By.XPATH, '//*/div/*/h2/a[@href]')
+    contenidos = driver.find_elements(By.CLASS_NAME, "news-content")
+except TimeoutException as ex:
+    print("Error de timeout")
+    driver.close()
+    driver.quit()
+    
+
+cantidad_noticias=len(noticias)
+fecha = datetime.datetime.now()
+print(colored("- Datos de:" + str(fecha) + "----(Noticias:" + str(cantidad_noticias) + ")----", 'dark_grey'))
+
+for entrada in range(cantidad_noticias):
+        print(colored(noticias[entrada].text, 'red', attrs=["bold"]))
+        print(colored(enlaces[entrada].get_attribute('href'), 'yellow', attrs=["underline"]))
+        print(colored(contenidos[entrada].text, 'green'))
+        print(colored("---------------------------------", 'blue'))
+driver.quit()

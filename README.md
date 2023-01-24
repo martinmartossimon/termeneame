@@ -35,3 +35,25 @@ En el mismo path donde hemos clonado el repositorio ejecutamos:
 ![termeneame](https://github.com/martinmartossimon/termeneame/blob/main/termeneame.png)
 
 
+## Parametrizar
+Por defecto viene configurado para usar google chrome ya que se ejecuta más rápido, pero se puede setear para que use firefox. Hay que editar directamente el archivo python con el ejecutable y modificar esta parte según el caso:
+![configuracion1](https://user-images.githubusercontent.com/16241139/214390036-ab229c54-efd7-4000-b2cf-8d54a80033b7.png)
+
+También se puede configurar una especie de paginación para que sea más fácil leer los artículos.
+![configuracion2](https://user-images.githubusercontent.com/16241139/214390104-083c144c-60c6-4460-b90a-2c1989adf52d.png)
+
+
+### Docker
+En docker hemos de modificar el Dockerfile para que tome una versión de geckodriver para arquitecturas amd64 o arm64 según nuestro caso.
+![imagen](https://user-images.githubusercontent.com/16241139/214390496-20ee42b4-b778-4c44-8bc6-00b619d16d21.png)
+
+Procedimiento:
+Una vez que estamos en el directorio clonado, hacemos:
+```bash
+#Generamos la imagen:
+docker build -t termeneame .
+
+#Ejecutamos el contenedor:
+docker run termeneame:latest
+```
+

@@ -45,6 +45,7 @@ También se puede configurar una especie de paginación para que sea más fácil
 
 ### Docker
 En docker hemos de modificar el Dockerfile para que tome una versión de geckodriver para arquitecturas amd64 o arm64 según nuestro caso.
+
 ![imagen](https://user-images.githubusercontent.com/16241139/214390496-20ee42b4-b778-4c44-8bc6-00b619d16d21.png)
 
 Procedimiento:
@@ -56,4 +57,6 @@ docker build -t termeneame .
 #Ejecutamos el contenedor:
 docker run termeneame:latest
 ```
+![imagen](https://user-images.githubusercontent.com/16241139/214392762-aa5baccc-552e-4ebd-8b58-b70375ac9c20.png)
 
+En raspberry es muy lento, pero funciona.
